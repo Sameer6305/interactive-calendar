@@ -2,6 +2,10 @@
 
 A design-forward, interactive wall calendar built with Next.js 14 (App Router), TypeScript, and Tailwind CSS.
 
+## Preview
+
+![WallCalendar UI Preview](docs/image.png)
+
 ## Component Overview
 
 The `WallCalendar` component is a tactile calendar experience that combines:
