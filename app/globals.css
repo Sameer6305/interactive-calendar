@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 40, 33, 24;
+  --background-start-rgb: 244, 240, 232;
+  --background-end-rgb: 250, 249, 245;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  min-height: 100vh;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-note-in {
+    animation: note-in 280ms ease-out;
+  }
+
+  .calendar-flip-out {
+    transform-origin: top center;
+    animation: month-flip-out 210ms ease-in forwards;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
+
+  .calendar-flip-in {
+    transform-origin: bottom center;
+    animation: month-flip-in 220ms ease-out forwards;
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes note-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes month-flip-out {
+  from {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+
+  to {
+    opacity: 0.1;
+    transform: rotateX(88deg);
+  }
+}
+
+@keyframes month-flip-in {
+  from {
+    opacity: 0.1;
+    transform: rotateX(-88deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  section {
+    box-shadow: none !important;
+  }
+}
